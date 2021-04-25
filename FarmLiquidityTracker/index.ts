@@ -7,8 +7,6 @@ import { LiquidityPoolService } from "../services/liquidity.service";
 import { FusionFarmService } from "../services/fusion.farm.service";
 import {
   DefiTrackerStorageService,
-  LiquidityPoolItem,
-  LiquidityPoolPerformanceItem,
   LiquidityPoolToken,
 } from "../services/storage.service";
 import { FarmLiquidityStatistics } from "../entities/farm.liquidity.statistics";

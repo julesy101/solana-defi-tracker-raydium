@@ -254,6 +254,13 @@ export const TOKENS: Tokens = {
     decimals: 0,
     referrer: "8DTehuES4tfnd2SrqcjN52XofxWXGjiLZRgM12U9pB6f",
   },
+  STEP: {
+    symbol: "STEP",
+    name: "STEP",
+    mintAddress: "StepAscQoEioFxxWGnh2sLBDFp9d8rvKz2Yp39iDpyT",
+    decimals: 9,
+    referrer: "EFQVX1S6dFroDDhJDAnMTX4fCfjt4fJXHdk1eEtJ2uRY",
+  },
 };
 
 export const LP_TOKENS: Tokens = {
@@ -645,5 +652,14 @@ export const LP_TOKENS: Tokens = {
 
     mintAddress: "AKJHspCwDhABucCxNLXUSfEzb7Ny62RqFtC9uNjJi4fq",
     decimals: TOKENS.SRM.decimals,
+  },
+  "STEP-USDC-V4": {
+    symbol: "STEP-USDC",
+    name: "STEP-USDC LP",
+    coin: { ...TOKENS.STEP },
+    pc: { ...TOKENS.USDC },
+
+    mintAddress: "AKJHspCwDhABucCxNLXUSfEzb7Ny62RqFtC9uNjJi4fq",
+    decimals: TOKENS.STEP.decimals,
   },
 };
