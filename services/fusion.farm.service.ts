@@ -11,21 +11,18 @@ export class FusionFarmService extends RaydiumFarmBaseService {
   ): Promise<FarmLiquidityStatistics> {
     if (!farm) return;
 
-    const hydratedLiquidityPool = await this.liquidityPoolService.getLiquidityPoolByMintAddress(
-      farm.lp.mintAddress
-    );
+    const hydratedLiquidityPool =
+      await this.liquidityPoolService.getLiquidityPoolByMintAddress(
+        farm.lp.mintAddress
+      );
     if (!hydratedLiquidityPool) return;
 
     const poolId = await this.getAccount(farm.poolId);
     const poolLpTokenAccount = await this.getAccount(farm.poolLpTokenAccount);
 
     farm.lp.balance = new TokenAmount(0, farm.lp.decimals);
-    const {
-      perShare,
-      perBlock,
-      perShareB,
-      perBlockB,
-    } = this.parsePoolAccountLayout(poolId, farm.version);
+    const { perShare, perBlock, perShareB, perBlockB } =
+      this.parsePoolAccountLayout(poolId, farm.version);
     const { reward, rewardB, lp } = farm;
 
     if (reward && rewardB && lp) {
@@ -70,9 +67,12 @@ export class FusionFarmService extends RaydiumFarmBaseService {
         apr: aprTotal,
         liquidityUsd,
         liquidityItemValue,
+        perShare,
+        perShareB,
       };
     }
   }
+
   public getFarmByName(name: string): FarmInfo {
     return cloneDeep(
       FARMS.find(

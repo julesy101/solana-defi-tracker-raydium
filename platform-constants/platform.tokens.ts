@@ -1,4 +1,5 @@
 import { TokenInfo } from "../entities/token.info";
+import { Tokens } from "../entities/tokens";
 
 export const NATIVE_SOL: TokenInfo = {
   symbol: "SOL",

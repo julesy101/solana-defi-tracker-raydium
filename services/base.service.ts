@@ -60,12 +60,6 @@ export abstract class RaydiumFarmBaseService extends SolanaBaseService {
     version: number,
     rewardDecimals: number
   ): TokenAmount {
-    // let parsed;
-    // if ([4, 5].includes(version)) {
-    //   parsed = STAKE_INFO_LAYOUT_V4.decode(poolAccount.data);
-    // } else {
-    //   parsed = STAKE_INFO_LAYOUT.decode(poolAccount.data);
-    // }
     const { rewardPerBlock } = this.parsePoolAccountLayout(
       poolAccount,
       version

@@ -33,3 +33,20 @@ export const STAKE_INFO_LAYOUT_V4 = struct([
   u64("lastBlock"),
   publicKey("owner"),
 ]);
+
+export const USER_STAKE_INFO_ACCOUNT_LAYOUT = struct([
+  u64("state"),
+  publicKey("poolId"),
+  publicKey("stakerOwner"),
+  u64("depositBalance"),
+  u64("rewardDebt"),
+]);
+
+export const USER_STAKE_INFO_ACCOUNT_LAYOUT_V4 = struct([
+  u64("state"),
+  publicKey("poolId"),
+  publicKey("stakerOwner"),
+  u64("depositBalance"),
+  u64("rewardDebt"),
+  u64("rewardDebtB"),
+]);

@@ -1,3 +1,5 @@
+export const TOKEN_PROGRAM_ID = "TokenkegQfeZyiNwAJbNbGKPFXCWuBvf9Ss623VQ5DA";
+
 export const SERUM_PROGRAM_ID_V2 =
   "EUqojwWA2rd19FZrzeBncJsm38Jm1hEhE3zsmX3bRc2o";
 export const SERUM_PROGRAM_ID_V3 =

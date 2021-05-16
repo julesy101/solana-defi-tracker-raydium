@@ -22,9 +22,10 @@ export class FarmService extends RaydiumFarmBaseService {
   ): Promise<FarmLiquidityStatistics> {
     if (!farm) return;
 
-    const hydratedLiquidityPool = await this.liquidityPoolService.getLiquidityPoolByMintAddress(
-      farm.lp.mintAddress
-    );
+    const hydratedLiquidityPool =
+      await this.liquidityPoolService.getLiquidityPoolByMintAddress(
+        farm.lp.mintAddress
+      );
     if (!hydratedLiquidityPool) return;
 
     const poolId = await this.getAccount(farm.poolId);
@@ -34,6 +35,10 @@ export class FarmService extends RaydiumFarmBaseService {
     const { reward, lp } = farm;
     if (reward && lp) {
       this.setLpTokenBalance(poolLpTokenAccount, farm.lp.balance);
+      const { perShare, perShareB } = this.parsePoolAccountLayout(
+        poolId,
+        farm.version
+      );
       const rewardPerBlockAmount = this.getRewardPerBlock(
         poolId,
         farm.version,
@@ -64,6 +69,8 @@ export class FarmService extends RaydiumFarmBaseService {
         apr,
         liquidityUsd,
         liquidityItemValue,
+        perShare,
+        perShareB,
       };
     }
   }
@@ -84,8 +91,8 @@ export class FarmService extends RaydiumFarmBaseService {
   }
 
   public getFarms(): FarmInfo[] {
-    return FARMS.filter(
-      (x) => ![4, 5].includes(x.version) && !x.isStake
-    ).map((x) => cloneDeep(x));
+    return FARMS.filter((x) => ![4, 5].includes(x.version) && !x.isStake).map(
+      (x) => cloneDeep(x)
+    );
   }
 }
